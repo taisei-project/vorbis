@@ -1,3 +1,6 @@
+
+vorbis_overrides = ['c_std=none']
+
 vorbis_sources = files(
     'mdct.c',
     'smallft.c',
@@ -32,6 +35,7 @@ vorbisenc_sources = files(
 libvorbis = library('vorbis', vorbis_sources,
     include_directories : incdir,
     dependencies : [ogg_dep, m_dep],
+    override_options : vorbis_overrides,
     build_by_default : not meson.is_subproject(),
 )
 
@@ -44,6 +48,7 @@ libvorbisfile = library('vorbisfile', vorbisfile_sources,
     include_directories : incdir,
     link_with : libvorbis,
     dependencies : [ogg_dep, m_dep],
+    override_options : vorbis_overrides,
     build_by_default : not meson.is_subproject(),
 )
 
@@ -55,6 +60,7 @@ vorbisfile_dep = declare_dependency(
 libvorbisenc = library('vorbisenc', vorbisenc_sources,
     include_directories : incdir,
     link_with : libvorbis,
+    override_options : vorbis_overrides,
     build_by_default : not meson.is_subproject(),
 )
 
