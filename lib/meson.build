@@ -53,6 +53,7 @@ libvorbisfile = library('vorbisfile', vorbisfile_sources,
 )
 
 vorbisfile_dep = declare_dependency(
+    dependencies : ogg_dep,
     link_with : libvorbisfile,
     include_directories : incdir
 )
@@ -65,6 +66,7 @@ libvorbisenc = library('vorbisenc', vorbisenc_sources,
 )
 
 vorbisenc_dep = declare_dependency(
+    dependencies : ogg_dep,
     link_with : libvorbisenc,
     include_directories : incdir
 )
